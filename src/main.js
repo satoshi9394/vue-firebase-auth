@@ -2,13 +2,23 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+//bootstrap librerias
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+//firebase used
 var firebase = require("firebase/app");
+
 
 // Add additional services that you want to use
 require("firebase/auth");
 // require("firebase/database");
-// require("firebase/firestore");
+require("firebase/firestore");
 // require("firebase/messaging");
 // require("firebase/functions");
 var firebaseConfig = {
@@ -22,7 +32,10 @@ var firebaseConfig = {
   measurementId: "G-1G82QQNYB8"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+//pero en versiones actuales 5.x ya no es necesario ejecutar el código:
+//firebaseApp.firestore().settings({timestampsInSnapshots: true})
+export default firebaseApp.firestore()
 
 
 

@@ -21,7 +21,19 @@ const routes = [
     path: '/ingreso',
     name: 'ingreso',
     component: () => import(/* webpackChunkName: "home" */ '../views/Ingreso.vue')
-  }
+  },
+  {
+    path: '/agregar',
+    name: 'agregar',
+    component: () => import(/* webpackChunkName: "agregar" */ '../views/Agregar.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/editar/:id',
+    name: 'editar',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Editar.vue'),
+    meta: { requiresAuth: true }
+  },
 ]
 
 const router = new VueRouter({
